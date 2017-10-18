@@ -1,26 +1,24 @@
 var countWater = function(array) {
 
-    var step = 0;
-        left = 0;
+    var max = 0;
         total = 0;
-        right = array[array.length - 1];
+        left = 0;
+        right = array.length - 1;
 
-    array.forEach(function (elem, index) {
 
-        if (left > elem) {
-            total = total + (left - elem);
-        } else  {
-            left = elem;
-            step = index
+    array.forEach(function (elem) {
+
+        if (array[left] < array[right]) {
+            //console.log(elem, array[left]);
+            max = Math.max(max,array[left]);
+            total += max - array[left];
+            left++;
+        } else {
+            max = Math.max(max,array[right]);
+            total += max - array[right];
+            right--;
         }
     });
-
-    for (i = array.length - 1; i > step; i--) {
-        if ( array[i] > right ) {
-            right = array[i];
-        }
-        total = total - (array[step] - right);
-    }
 
     return total;
 };
