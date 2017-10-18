@@ -6,11 +6,19 @@ var countWater = function(array) {
         right = array[array.length - 1];
 
     array.forEach(function (elem, index) {
-        left > elem ? total = total + (left - elem) : (left = elem, step = index);
+
+        if (left > elem) {
+            total = total + (left - elem);
+        } else  {
+            left = elem;
+            step = index
+        }
     });
 
     for (i = array.length - 1; i > step; i--) {
-        array[i] > right ? right = array[i] : null;
+        if ( array[i] > right ) {
+            right = array[i];
+        }
         total = total - (array[step] - right);
     }
 
