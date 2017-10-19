@@ -10,11 +10,18 @@ var countWater = function(array) {
 
         if (array[left] <= array[right]) {
             //console.log(elem, array[left]);
-            max = Math.max(max,array[left]);
+            if (array[left] > max) {
+                max = array[left];
+            }
+
             total += max - array[left];
             left++;
         } else if (array[right] < elem) {
-            max = Math.max(max,array[right]);
+
+            if (array[right] > max) {
+                max = array[right];
+            }
+
             total += max - array[right];
             right--;
         }
