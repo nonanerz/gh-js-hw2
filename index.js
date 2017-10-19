@@ -8,15 +8,15 @@ var countWater = function(array) {
 
     array.forEach(function (elem) {
 
-        if (array[left] <= array[right]) {
-            //console.log(elem, array[left]);
+        if (array[left] < array[right]) {
+
             if (array[left] > max) {
                 max = array[left];
             }
 
             total += max - array[left];
             left++;
-        } else if (array[right] < elem) {
+        } else {
 
             if (array[right] > max) {
                 max = array[right];
